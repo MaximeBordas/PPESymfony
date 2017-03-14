@@ -7,6 +7,7 @@
  */
 
 namespace FacturationBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -14,7 +15,7 @@ class FacturationController extends Controller
 {
     public  function  indexAction()
     {
-        return $this->render('FacturationBundle:Facture:index.html.twig');
+        return $this->render('FacturationBundle:Facturation:index.html.twig');
     }
 
 }
