@@ -1,0 +1,3 @@
+facturation_homepage:
+    path:     /
+    defaults: { _controller: FacturationBundle:Default:index }
