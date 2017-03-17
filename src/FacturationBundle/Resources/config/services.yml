@@ -2,3 +2,8 @@ services:
 #    facturation.example:
 #        class: FacturationBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+  facturation.menu_listener:
+    class: FacturationBundle\EventListener\MyMenuItemListListener
+    tags:
+      - { name: kernel.event_listener, event:theme.sidebar_setup_menu, method:onSetupMenu }
