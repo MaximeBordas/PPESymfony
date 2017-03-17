@@ -17,5 +17,9 @@ class FacturationController extends Controller
     {
         return $this->render('FacturationBundle:Facturation:index.html.twig');
     }
+    public function afficherListeAction()
+    {
+        return $this->render('FacturationBundle:Facturation:afficherListe.html.twig');
+    }
 
 }

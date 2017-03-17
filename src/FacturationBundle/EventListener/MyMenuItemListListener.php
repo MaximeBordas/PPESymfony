@@ -24,7 +24,7 @@ class MyMenuItemListListener {
     protected function getMenu(Request $request) {
         // Build your menu here by constructing a MenuItemModel array
         $menuItems = array(
-            $blog = new MenuItemModel('ItemId', 'Facturation', 'facturation_accueil', array(/* options */), 'iconclasses fa fa-plane')
+            $blog = new MenuItemModel('ItemId', 'Facturation', 'facturation_facture_aff_liste', array(/* options */), 'iconclasses fa fa-plane')
         );
         return $this->activateByRoute($request->get('_route'), $menuItems);
     }

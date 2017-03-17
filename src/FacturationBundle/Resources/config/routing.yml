@@ -1,3 +1,7 @@
 facturation_accueil:
-    path:     facturation
+    path:   /
     defaults: { _controller: FacturationBundle:Facturation:index }
+
+facturation_facture_aff_liste:
+    path:   /facture/liste
+    defaults: { _controller: FacturationBundle:Facturation:afficherListe }
