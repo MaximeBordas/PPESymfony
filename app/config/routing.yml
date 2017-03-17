@@ -5,3 +5,4 @@ facturation:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
