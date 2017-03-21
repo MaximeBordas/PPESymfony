@@ -1,0 +1,65 @@
+{% extends "::base.html.twig" %}
+{% block page_title %}<h1>Gestion des Reglements</h1>{% endblock %}
+{% block page_subtitle %}<small></small>{% endblock %}
+{% block page_content %}
+
+<form method="post">
+    <div class="col-lg-8">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for ="numFacture">Numéro de facture:</label>
+            <div class="col-sm-10">
+                {#<input type="text" class="form-control" id="numFacture" name="numFacture" placeholder="Nom de la pharmacie">#}
+                <select class="form-control" id="numFacture">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for ="anneeFacture">Année Facture :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="anneeFacture" name="anneeFacture" value="uneAnnee" readonly>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for ="numClient">Numéro du client:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="numClient" name="numClient" value="unNumClient" readonly>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for ="montantTTC">Montant TTC:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="montantTTC" name="montantTTC" value="unMontantRegl" readonly>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox" name="client">
+                    <label><input type="checkbox" name="client">Client</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
+                <button type="submit" class="btn btn-success">Valider</button>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+
+{% endblock %}

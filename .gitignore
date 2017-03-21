@@ -4,6 +4,11 @@
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 
+nbproject/*
+Resources/public/vendor/*
+Resources/docs/apidoc
+/.idea
+
 # Email spool folder
 /app/spool/*
 
