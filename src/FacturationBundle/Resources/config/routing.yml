@@ -5,3 +5,7 @@ facturation_accueil:
 facturation_facture_aff_liste:
     path:   /facture/liste
     defaults: { _controller: FacturationBundle:Facturation:afficherListe }
+
+facturation_facture_gestion_reglement:
+    path: /facture/reglement
+    defaults: { _controller: FacturationBundle:Facturation:gestionReglement }

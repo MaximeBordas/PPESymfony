@@ -21,5 +21,9 @@ class FacturationController extends Controller
     {
         return $this->render('FacturationBundle:Facturation:afficherListe.html.twig');
     }
+    public function gestionReglementAction()
+    {
+        return $this->render('FacturationBundle:Facturation:gestionReglement.html.twig');
+    }
 
 }
