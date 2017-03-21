@@ -7,7 +7,7 @@
 nbproject/*
 Resources/public/vendor/*
 Resources/docs/apidoc
-.idea
+/.idea
 
 # Email spool folder
 /app/spool/*
