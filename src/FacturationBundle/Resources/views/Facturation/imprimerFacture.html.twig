@@ -1,14 +1,14 @@
 {% extends "::base.html.twig" %}
-{% block page_title %}<h1></h1>{% endblock %}
-{% block page_subtitle %}<small></small>{% endblock %}
-{% block page_content %}<p></p>
-    <div class="col-lg-2">
+{% block page_title %} <center> <u>  <h1> Gestion des factures </h1> </u> </center> {% endblock %}
+{% block page_subtitle %}{% endblock %}
+{% block page_content %}
 
+    <div class="col-lg-3">
     </div>
+
     <div class="col-lg-8">
 
         <form method="POST">
-            <p>
             <div class="form-group">
                 <h4 class="control-label col-sm-6" for="nom"> Numéro de Facture :</h4><br>
                 <div class="col-sm-10">
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <h4 class="control-label col-sm-6" for="Annee"> Annee de la facture :</h4> <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="anneeFacture" name="anneeFacture"  value="annee" style: size="10px;" disabled > <br>
+                    <input type="text" class="form-control" id="anneeFacture" name="anneeFacture"  value="annee" disabled > <br>
                 </div>
             </div>
             <br>
@@ -36,17 +36,17 @@
                     <input type="text" class="form-control" id="MontantHt" name="MontantHt"  value="Montant" disabled> <br>
                 </div>
             </div>
+            <br>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
                     <button type="submit" class="btn btn-success">Valider</button>
                 </div>
             </div>
-            </p>
         </form>
-
     </div>
-    <div class="col-lg-2">
 
+    <div class="col-lg-1">
     </div>
+
 {% endblock %}
