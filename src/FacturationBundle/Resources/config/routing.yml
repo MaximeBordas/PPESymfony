@@ -9,3 +9,7 @@ facturation_facture_aff_liste:
 facturation_facture_gestion_reglement:
     path: /facture/reglement
     defaults: { _controller: FacturationBundle:Facturation:gestionReglement }
+
+facturation_facture_imprimer:
+  path:   /facture/imprimer
+  defaults: {_controller: FacturationBundle:Facturation:ImprimerFacture }
