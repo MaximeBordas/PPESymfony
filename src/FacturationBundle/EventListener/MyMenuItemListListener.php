@@ -25,7 +25,8 @@ class MyMenuItemListListener {
         // Build your menu here by constructing a MenuItemModel array
         $menuItems = array(
             $blog = new MenuItemModel('FacturationId', 'Facturation', 'facturation_facture_aff_liste', array(/* options */), 'iconclasses fa fa-plane'),
-            $reglement = new MenuItemModel('ReglementId', 'Reglement', 'facturation_facture_gestion_reglement', array(/* options */), 'iconclasses fa fa-money')
+            $reglement = new MenuItemModel('ReglementId', 'Reglement', 'facturation_facture_gestion_reglement', array(/* options */), 'iconclasses fa fa-money'),
+            $impress = new MenuItemModel ('ImpressionId', 'Impression' , 'facturation_facture_imprimer', array(/* options */), 'iconclasses fa fa-print')
         );
         return $this->activateByRoute($request->get('_route'), $menuItems);
     }
