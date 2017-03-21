@@ -29,5 +29,9 @@ class FacturationController extends Controller
     {
         return $this->render('FacturationBundle:Facturation:imprimerFacture.html.twig');
     }
+    public  function ajouterFacturationAction()
+    {
+        return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig');
+    }
 
 }
