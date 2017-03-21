@@ -13,14 +13,36 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>NOM</th>
+                    <th>Nom de la facture</th>
+                    <th>Nom Client </th>
+                    <th>Date</th>
+                    <th>Annee de la facture</th>
+                    <th>Montant HT</th>
+                    <th>Montant TVA</th>
+                    <th>Montant TTC</th>
+                    <th>Taux de remise</th>
+                    <th>Montant total</th>
+                    <th>Reglement</th>
+                    <th>date du reglement</th>
+                    <th>commentaire</th>
                 </tr>
                 </thead>
                     <tbody>
                     {% for facture in lalisteFacture %}
                     <tr>
                         <td>{{facture.id}}</td>
-                        <td>{{facture.client}}</td>
+                        <td>{{facture.nom_F}}</td>
+                        <td>{{ facture.client }}</td>
+                        <td>{{ facture.Date }}</td>
+                        <td>{{ facture.annee_F }}</td>
+                        <td>{{ facture.montantHT }}</td>
+                        <td>{{ facture.montantTVA }}</td>
+                        <td>{{ facture.montantTTC }}</td>
+                        <td>{{ facture.txremise }}</td>
+                        <td>{{ facture.montantTotal }}</td>
+                        <td>{{ facture.reglement }}</td>
+                        <td>{{ facture.date_reglement }}</td>
+                        <td>{{ facture.commentaire }}</td>
                     </tr>
                     {% endfor %}
 
