@@ -1,0 +1,19 @@
+facturation_accueil:
+    path:   /
+    defaults: { _controller: FacturationBundle:Facturation:index }
+
+facturation_facture_aff_liste:
+    path:   /facture/liste
+    defaults: { _controller: FacturationBundle:Facturation:afficherListe }
+
+facturation_facture_gestion_reglement:
+    path: /facture/reglement
+    defaults: { _controller: FacturationBundle:Facturation:gestionReglement }
+
+facturation_facture_imprimer:
+  path:   /facture/imprimer
+  defaults: {_controller: FacturationBundle:Facturation:ImprimerFacture }
+
+facturation_facture_ajouter:
+  path:   /facture/ajouter
+  defaults: {_controller: FacturationBundle:Facturation:ajouterFacturation}
