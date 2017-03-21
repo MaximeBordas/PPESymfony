@@ -4,27 +4,25 @@
         <h2>
             Liste des produits
         </h2>
+
+
+
+
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>Libelle</th>
-                    <th>Prix</th>
+                    <th>ID</th>
+                    <th>NOM</th>
                 </tr>
                 </thead>
                     <tbody>
+                    {% for facture in lalisteFacture %}
                     <tr>
-                        <td>Treo</td>
-                        <td>sqd</td>
+                        <td>{{facture.id}}</td>
+                        <td>{{facture.client}}</td>
                     </tr>
-                    <tr>
-                        <td>Treo</td>
-                        <td>sqd</td>
-                    </tr>
-                    <tr>
-                        <td>Treo</td>
-                        <td>sqd</td>
-                    </tr>
+                    {% endfor %}
 
                     </tbody>
             </table>
