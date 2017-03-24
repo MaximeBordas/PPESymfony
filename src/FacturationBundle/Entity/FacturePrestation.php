@@ -21,12 +21,7 @@ class FacturePrestation
      */
     private $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="numFacture", type="integer")
-     */
-    private $numFacture;
+
 
     /**
      * @var int
@@ -109,29 +104,7 @@ class FacturePrestation
         return $this->id;
     }
 
-    /**
-     * Set numFacture
-     *
-     * @param integer $numFacture
-     *
-     * @return FacturePrestation
-     */
-    public function setNumFacture($numFacture)
-    {
-        $this->numFacture = $numFacture;
 
-        return $this;
-    }
-
-    /**
-     * Get numFacture
-     *
-     * @return int
-     */
-    public function getNumFacture()
-    {
-        return $this->numFacture;
-    }
 
     /**
      * Set numLigne
