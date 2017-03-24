@@ -159,6 +159,12 @@ class Facture
      */
     private $client;
 
+    /**
+     * @ORM\OneToOne(targetEntity="FacturationBundle\Entity\Devis", cascade={"persist"})
+     */
+    private $unDevis;
+
+
 
     public function __construct()
     {
@@ -630,5 +636,77 @@ class Facture
     public function getNumTauxTva()
     {
         return $this->numTauxTva;
+    }
+
+    /**
+     * Set facturePrestation
+     *
+     * @param \FacturationBundle\Entity\FacturePrestation $facturePrestation
+     *
+     * @return Facture
+     */
+    public function setFacturePrestation(\FacturationBundle\Entity\FacturePrestation $facturePrestation)
+    {
+        $this->facturePrestation = $facturePrestation;
+
+        return $this;
+    }
+
+    /**
+     * Get facturePrestation
+     *
+     * @return \FacturationBundle\Entity\FacturePrestation
+     */
+    public function getFacturePrestation()
+    {
+        return $this->facturePrestation;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \FacturationBundle\Entity\Client $client
+     *
+     * @return Facture
+     */
+    public function setClient(\FacturationBundle\Entity\Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \FacturationBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Set unDevis
+     *
+     * @param \FacturationBundle\Entity\Devis $unDevis
+     *
+     * @return Facture
+     */
+    public function setUnDevis(\FacturationBundle\Entity\Devis $unDevis)
+    {
+        $this->unDevis = $unDevis;
+
+        return $this;
+    }
+
+    /**
+     * Get unDevis
+     *
+     * @return \FacturationBundle\Entity\Devis
+     */
+    public function getUnDevis()
+    {
+        return $this->unDevis;
     }
 }

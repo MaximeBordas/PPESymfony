@@ -159,6 +159,12 @@ class Facture
      */
     private $client;
 
+    /**
+     * @ORM\OneToOne(targetEntity="FacturationBundle\Entity\Devis", cascade={"persist"})
+     */
+    private $unDevis;
+
+
 
     public function __construct()
     {
@@ -678,5 +684,29 @@ class Facture
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * Set unDevis
+     *
+     * @param \FacturationBundle\Entity\Devis $unDevis
+     *
+     * @return Facture
+     */
+    public function setUnDevis(\FacturationBundle\Entity\Devis $unDevis)
+    {
+        $this->unDevis = $unDevis;
+
+        return $this;
+    }
+
+    /**
+     * Get unDevis
+     *
+     * @return \FacturationBundle\Entity\Devis
+     */
+    public function getUnDevis()
+    {
+        return $this->unDevis;
     }
 }
