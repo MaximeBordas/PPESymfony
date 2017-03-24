@@ -29,6 +29,9 @@ class Banque
     private $libBanque;
 
 
+
+
+
     /**
      * Get id
      *
@@ -63,4 +66,3 @@ class Banque
         return $this->libBanque;
     }
 }
-
