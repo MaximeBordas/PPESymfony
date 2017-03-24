@@ -2,7 +2,7 @@
 {% block page_title %}<h1>Gestion des Reglements</h1>{% endblock %}
 {% block page_subtitle %}<small></small>{% endblock %}
 {% block page_content %}
-    <form method="post">
+    <!--<form method="post">
         <div class="col-lg-8">
             <div class="form-group">
                 <label class="control-label col-sm-2" for ="clientFac">Client:</label>
@@ -93,7 +93,11 @@
 
         </div>
 
-    </form>
+    </form>-->
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Ajouter !</button>
+    {{ form_end(form) }}
 
 
 {% endblock %}

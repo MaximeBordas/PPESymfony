@@ -16,4 +16,4 @@ facturation_facture_imprimer:
 
 facturation_facture_ajouter:
   path:   /facture/ajouter
-  defaults: {_controller: FacturationBundle:Facturation:ajouterFacturation}
+  defaults: {_controller: FacturationBundle:Facturation:ajouterFacture}

@@ -8,6 +8,8 @@
 
 namespace FacturationBundle\Controller;
 
+use FacturationBundle\Entity\Facture;
+use FacturationBundle\Form\FactureType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,9 +42,37 @@ class FacturationController extends Controller
     {
         return $this->render('FacturationBundle:Facturation:imprimerFacture.html.twig');
     }
-    public  function ajouterFacturationAction()
+    public  function ajouterFactureAction(Request $request)
     {
-        return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig');
+        //on crée une facture
+        $facture = new Facture();
+
+        //On récupére le formulaire
+        $form = $this->createForm(FactureType::class,$facture);
+
+        $form->handleRequest($request);
+
+        //on vérifie si le form est soumis
+        if($form->isSubmitted() && $form->isValid())
+        {
+            //on enregistre la facture en bdd
+            $em = $this->getDoctrine()->getManager();
+            //on persist l'objet Facture
+            $em->persist($facture);
+            //on envois en bdd
+            $em->flush();
+
+            return $this->render("FacturationBundle:Facturation:afficherListe.html.twig");
+
+        }
+
+
+
+        //on Crée le html de la vue
+        $formView  = $form->createView();
+
+        //on rend la vue
+        return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig',array('form'=>$formView));
     }
     public function listeFactures()
     {
