@@ -62,6 +62,7 @@
                 <th>Montant TTC</th>
                 <th>Date facture</th>
                 <th>Taux de remise</th>
+                <th>Reglé</th>
             </tr>
             </thead>
             {% for facture in lesFactures %}
@@ -71,6 +72,11 @@
                     <td>{{ facture.montantTTC }}</td>
                     <td>{{ facture.dateFacture|date('d-m-Y') }}</td>
                     <td>{{ facture.txRemise }}</td>
+                    {% if facture.factureRegler == 1 %}
+                        <td style="color: green; text-decoration: underline;">Facture réglé</td>
+                    {% else %}
+                        <td style="text-decoration: underline; color: red;">Facture non reglé</td>
+                    {% endif %}
                 </tr>
                 </tbody>
             {% else %}
