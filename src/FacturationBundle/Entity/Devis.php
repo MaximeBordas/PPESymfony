@@ -98,6 +98,18 @@ class Devis
      */
     private $libPrecisions;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="FacturationBundle\Entity\TVA")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $laTVA;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FacturationBundle\Entity\Client")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private  $leClient;
+
 
     /**
      * Get id
@@ -373,5 +385,53 @@ class Devis
     public function getAnneeDevis()
     {
         return $this->anneeDevis;
+    }
+
+    /**
+     * Set laTVA
+     *
+     * @param \FacturationBundle\Entity\TVA $laTVA
+     *
+     * @return Devis
+     */
+    public function setLaTVA(\FacturationBundle\Entity\TVA $laTVA)
+    {
+        $this->laTVA = $laTVA;
+
+        return $this;
+    }
+
+    /**
+     * Get laTVA
+     *
+     * @return \FacturationBundle\Entity\TVA
+     */
+    public function getLaTVA()
+    {
+        return $this->laTVA;
+    }
+
+    /**
+     * Set leClient
+     *
+     * @param \FacturationBundle\Entity\Client $leClient
+     *
+     * @return Devis
+     */
+    public function setLeClient(\FacturationBundle\Entity\Client $leClient)
+    {
+        $this->leClient = $leClient;
+
+        return $this;
+    }
+
+    /**
+     * Get leClient
+     *
+     * @return \FacturationBundle\Entity\Client
+     */
+    public function getLeClient()
+    {
+        return $this->leClient;
     }
 }
