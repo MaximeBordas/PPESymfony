@@ -9,6 +9,10 @@
 namespace FacturationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use FacturationBundle\Entity\Facture;
 
 
 class FacturationController extends Controller
@@ -24,7 +28,13 @@ class FacturationController extends Controller
     }
     public function gestionReglementAction()
     {
-        return $this->render('FacturationBundle:Facturation:gestionReglement.html.twig');
+        // récupération de la liste des pharmacies
+        // --------------
+        $repository = $this->getDoctrine()->getManager()->getRepository('FacturationBundle:Facture');
+        $listFactures=$repository->findAll();
+
+
+        return $this->render('FacturationBundle:Facturation:gestionReglement.html.twig', array('lesFactures'=>$listFactures));
     }
     public function imprimerFactureAction()
     {

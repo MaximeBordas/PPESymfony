@@ -4,57 +4,85 @@
 {% block page_content %}
 
     <div class="col-lg-6">
-        <form method="post">
-                <div class="form-group">
-                    <h4 class="control-label col-sm-6" for ="numFacture">Numéro de facture:</h4> <br>
-                    <div class="col-sm-10">
-                        {#<input type="text" class="form-control" id="numFacture" name="numFacture" placeholder="Nom de la pharmacie">#}
-                        <select class="form-control" id="numFacture">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                        <br>
-                    </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <h4 class="control-label col-sm-6" for ="anneeFacture">Année Facture :</h4> <br>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="anneeFacture" name="anneeFacture" value="uneAnnee" readonly> <br>
-                    </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <h4 class="control-label col-sm-6" for ="numClient">Numéro du client:</h4> <br>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="numClient" name="numClient" value="unNumClient" readonly> <br>
-                    </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <h4 class="control-label col-sm-6" for ="montantTTC">Montant TTC:</h4> <br>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="montantTTC" name="montantTTC" value="unMontantRegl" readonly> <br>
-                    </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox" name="client">
-                            <label><input type="checkbox" name="client">Client</label>
-                        </div>
-                    </div>
-                </div>
-            <br>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
-                        <button type="submit" class="btn btn-success">Valider</button>
-                    </div>
-                </div>
-        </form>
+        {#<form method="post">#}
+                {#<div class="form-group">#}
+                    {#<h4 class="control-label col-sm-6" for ="numFacture">Numéro de facture:</h4> <br>#}
+                    {#<div class="col-sm-10">#}
+                        {#<select class="form-control" id="numFacture">#}
+                        {#{% for facture in lesFactures %}#}
+                            {#<option>{{ facture.libFacture }}</option>#}
+                        {#{% else %}#}
+                            {#<option>Pas de facture</option>#}
+                        {#{% endfor %}#}
+                        {#</select>#}
+                        {#<br>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<br>#}
+                {#<div class="form-group">#}
+                    {#<h4 class="control-label col-sm-6" for ="anneeFacture">Année Facture :</h4> <br>#}
+                    {#<div class="col-sm-10">#}
+                        {#<input type="text" class="form-control" id="anneeFacture" name="anneeFacture" value="uneAnnee" readonly> <br>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<br>#}
+                {#<div class="form-group">#}
+                    {#<h4 class="control-label col-sm-6" for ="numClient">Numéro du client:</h4> <br>#}
+                    {#<div class="col-sm-10">#}
+                        {#<input type="text" class="form-control" id="numClient" name="numClient" value="unNumClient" readonly> <br>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<br>#}
+                {#<div class="form-group">#}
+                    {#<h4 class="control-label col-sm-6" for ="montantTTC">Montant TTC:</h4> <br>#}
+                    {#<div class="col-sm-10">#}
+                        {#<input type="text" class="form-control" id="montantTTC" name="montantTTC" value="unMontantRegl" readonly> <br>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<br>#}
+                {#<div class="form-group">#}
+                    {#<div class="col-sm-offset-2 col-sm-10">#}
+                        {#<div class="checkbox" name="client">#}
+                            {#<label><input type="checkbox" name="client">Client</label>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#<br>#}
+                {#<div class="form-group">#}
+                    {#<div class="col-sm-offset-2 col-sm-10">#}
+                        {#<a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>#}
+                        {#<button type="submit" class="btn btn-success">Valider</button>#}
+                    {#</div>#}
+                {#</div>#}
+        {#</form>#}
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Libelle</th>
+                <th>Montant TTC</th>
+                <th>Date facture</th>
+                <th>Taux de remise</th>
+                <th>Reglé</th>
+            </tr>
+            </thead>
+            {% for facture in lesFactures %}
+                <tbody>
+                <tr>
+                    <td>{{ facture.libFacture }}</td>
+                    <td>{{ facture.montantTTC }}</td>
+                    <td>{{ facture.dateFacture|date('d-m-Y') }}</td>
+                    <td>{{ facture.txRemise }}</td>
+                    {% if facture.factureRegler == 1 %}
+                        <td style="color: green; text-decoration: underline;">Facture réglé</td>
+                    {% else %}
+                        <td style="text-decoration: underline; color: red;">Facture non reglé</td>
+                    {% endif %}
+                </tr>
+                </tbody>
+            {% else %}
+                <td>Pas de projet</td>
+            {% endfor %}
+        </table>
     </div>
 
 {% endblock %}

@@ -57,12 +57,7 @@ class Facture
      */
     private $montantAccompteTTC;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="codeModeReglement", type="string", length=255)
-     */
-    private $codeModeReglement;
+
 
     /**
      * @var int
@@ -126,6 +121,13 @@ class Facture
      * @ORM\Column(name="DateDevis", type="datetime")
      */
     private $dateDevis;
+
+    /**
+     * @var \boolean
+     *
+     * @ORM\Column(name="FactureRegler", type="boolean")
+     */
+    private $factureRegler;
 
 
 
@@ -302,29 +304,7 @@ class Facture
         return $this->montantAccompteTTC;
     }
 
-    /**
-     * Set codeModeReglement
-     *
-     * @param string $codeModeReglement
-     *
-     * @return Facture
-     */
-    public function setCodeModeReglement($codeModeReglement)
-    {
-        $this->codeModeReglement = $codeModeReglement;
 
-        return $this;
-    }
-
-    /**
-     * Get codeModeReglement
-     *
-     * @return string
-     */
-    public function getCodeModeReglement()
-    {
-        return $this->codeModeReglement;
-    }
 
     /**
      * Set numCheque
@@ -708,5 +688,29 @@ class Facture
     public function getUnDevis()
     {
         return $this->unDevis;
+    }
+
+    /**
+     * Set factureRegler
+     *
+     * @param boolean $factureRegler
+     *
+     * @return Facture
+     */
+    public function setFactureRegler($factureRegler)
+    {
+        $this->factureRegler = $factureRegler;
+
+        return $this;
+    }
+
+    /**
+     * Get factureRegler
+     *
+     * @return boolean
+     */
+    public function getFactureRegler()
+    {
+        return $this->factureRegler;
     }
 }
