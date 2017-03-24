@@ -30,8 +30,6 @@ class Banque
 
 
 
-
-
     /**
      * Get id
      *
