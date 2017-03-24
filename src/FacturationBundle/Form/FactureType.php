@@ -21,7 +21,6 @@ class FactureType extends AbstractType
             ->add('montantHT')
             ->add('montantTTC')
             ->add('montantAccompteTTC')
-            ->add('codeModeReglement')
             ->add('numCheque')
             ->add('dateReglement')
             ->add('typeFacture'
