@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 
 class FactureType extends AbstractType
@@ -20,7 +21,6 @@ class FactureType extends AbstractType
             ->add('montantHT')
             ->add('montantTTC')
             ->add('montantAccompteTTC')
-            ->add('codeModeReglement')
             ->add('numCheque')
             ->add('dateReglement')
             ->add('typeFacture'
