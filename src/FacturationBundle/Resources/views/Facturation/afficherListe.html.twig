@@ -1,26 +1,52 @@
 {% extends "::base.html.twig" %}
+
+
 {% block page_content %}
     <div class="col-lg-12">
         <h2>
-            Liste des produits
+           <center>Liste des Factures</center>
         </h2>
 
 
 
 
         <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
+            <table style="text-align: center" class="table table-bordered table-hover" >
+                <thead class="thead">
                 <tr>
                     <th>ID</th>
-                    <th>NOM</th>
+                    <th>Libelle de la facture</th>
+                    <th>Date de la facture</th>
+                    <th>Taux TVA</th>
+                    <th>Montant HT</th>
+                    <th>Montant TTC</th>
+                    <th>Montant accompte TTC</th>
+                    <th> numéro chèque</th>
+                    <th>Date règlement</th>
+                    <th>Type facture</th>
+                    <th>Montant remise</th>
+                    <th>taux de remise</th>
+                    <th>Date Devis</th>
+                    <th>Commentaire</th>
                 </tr>
                 </thead>
                     <tbody>
                     {% for facture in lalisteFacture %}
-                    <tr>
-                        <td>{{facture.id}}</td>
-                        <td>{{facture.client}}</td>
+                    <tr class="corps">
+                        <td>{{ facture.id }}</td>
+                        <td>{{ facture.libFacture }}</td>
+                        <td>{{ facture.DateFacture|date('d-m-Y') }}</td>
+                        <td>{{ facture.numTauxTVA }}</td>
+                        <td>{{ facture.montantHT }}</td>
+                        <td>{{ facture.montantTTC }}</td>
+                        <td>{{ facture.montantAccompteTTC }}</td>
+                        <td>{{ facture.numCheque }}</td>
+                        <td>{{ facture.DateReglement|date('d-m-Y') }}</td>
+                        <td>{{ facture.typeFacture }}</td>
+                        <td>{{ facture.montantRemise }}</td>
+                        <td>{{ facture.txRemise }}</td>
+                        <td>{{ facture.DateDevis|date('d-m-Y') }}</td>
+                        <td>{{ facture.commentaire }}</td>
                     </tr>
                     {% endfor %}
 
@@ -28,4 +54,20 @@
             </table>
         </div>
     </div>
+
+    <style>
+        .thead {
+            background-color: #1ab7ea;
+        }
+
+        .corps{
+            background-color: #e1e1e1;
+        }
+
+        td {
+            width: 300px;
+        }
+
+    </style>
 {% endblock %}
+
