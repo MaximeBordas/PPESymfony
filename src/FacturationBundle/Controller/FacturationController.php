@@ -8,11 +8,14 @@
 
 namespace FacturationBundle\Controller;
 
+
+use FacturationBundle\Entity\Facture;
+use FacturationBundle\Form\FactureType;
+use FacturationBundle\FacturationBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use FacturationBundle\Entity\Facture;
 
 
 class FacturationController extends Controller
@@ -53,15 +56,41 @@ class FacturationController extends Controller
     // FONCTION IMPRIMER UNE FACTURE ACTION
     public function imprimerFactureAction()
     {
-        return $this->render('FacturationBundle:Facturation:imprimerFacture.html.twig');
+        $lesFactures = $this->getDoctrine()->getManager()->getRepository('FacturationBundle:Facture')->findAll();
+
+        return $this->render('FacturationBundle:Facturation:imprimerFacture.html.twig',array('lesFactures' => $lesFactures));
     }
-
-
-    // FONCTION AJOUTER UNE FACTURE ACTION
-
-    public  function ajouterFacturationAction()
+    public  function ajouterFactureAction(Request $request)
     {
-        return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig');
+        //on crée une facture
+        $facture = new Facture();
+
+        //On récupére le formulaire
+        $form = $this->createForm(FactureType::class,$facture);
+
+        $form->handleRequest($request);
+
+        //on vérifie si le form est soumis
+        if($form->isSubmitted() && $form->isValid())
+        {
+            //on enregistre la facture en bdd
+            $em = $this->getDoctrine()->getManager();
+            //on persist l'objet Facture
+            $em->persist($facture);
+            //on envois en bdd
+            $em->flush();
+
+            return $this->render("FacturationBundle:Facturation:afficherListe.html.twig");
+
+        }
+
+
+
+        //on Crée le html de la vue
+        $formView  = $form->createView();
+
+        //on rend la vue
+        return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig',array('form'=>$formView));
     }
 
 
