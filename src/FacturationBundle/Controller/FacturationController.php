@@ -8,8 +8,12 @@
 
 namespace FacturationBundle\Controller;
 
+<<<<<<< Updated upstream
 use FacturationBundle\Entity\Facture;
 use FacturationBundle\Form\FactureType;
+=======
+use FacturationBundle\FacturationBundle;
+>>>>>>> Stashed changes
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +43,9 @@ class FacturationController extends Controller
     }
     public function imprimerFactureAction()
     {
-        return $this->render('FacturationBundle:Facturation:imprimerFacture.html.twig');
+        $lesFactures = $this->getDoctrine()->getManager()->getRepository('FacturationBundle:Facture')->findAll();
+
+        return $this->render('FacturationBundle:Facturation:imprimerFacture.html.twig',array('lesFactures' => $lesFactures));
     }
     public  function ajouterFactureAction(Request $request)
     {

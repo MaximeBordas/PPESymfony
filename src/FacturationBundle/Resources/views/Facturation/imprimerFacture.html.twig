@@ -5,42 +5,29 @@
 {% block page_content %}
 
     <div class="col-lg-6">
-            <form method="POST">
-                <div class="form-group">
-                    <h4 class="control-label col-sm-6" for="nom"> Numéro de Facture :</h4><br>
-                    <div class="col-sm-10">
-                        <select  class="form-control" id="numFacture" name="numFacture" > <option> 1 </option> <option> 2 </option>  <option> 3 </option> </select> <br>
-                    </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <h4 class="control-label col-sm-6" for="Annee"> Annee de la facture :</h4> <br>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="anneeFacture" name="anneeFacture"  value="annee" disabled > <br>
-                    </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <h4 class="control-label col-sm-6" for="Date"> Date de la facture :</h4> <br>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="dateFacture" name="dateFacture"  value="date" disabled> <br>
-                    </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <h4 class="control-label col-sm-6" for="ville"> Montant Ht :</h4> <br>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="MontantHt" name="MontantHt"  value="Montant" disabled> <br>
-                    </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
-                        <button type="submit" class="btn btn-success">Valider</button>
-                    </div>
-                </div>
-            </form>
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Libelle</th>
+                <th>Montant TTC</th>
+                <th>Date facture</th>
+                <th>Taux de remise</th>
+            </tr>
+            </thead>
+            {% for facture in lesFactures %}
+                <tbody>
+                <tr>
+                    <td>{{ facture.libFacture }}</td>
+                    <td>{{ facture.montantTTC }}</td>
+                    <td>{{ facture.dateFacture|date('d-m-Y') }}</td>
+                    <td>{{ facture.txRemise }}</td>
+                    <td> <a class="btn btn-success" href="http://localhost/PPESymfony/web/app_dev.php/facture/reglement"> Voir la facture </a>  </td>
+                </tr>
+                </tbody>
+            {% else %}
+                <td>Pas de facture </td>
+            {% endfor %}
+        </table>
     </div>
 
 {% endblock %}
