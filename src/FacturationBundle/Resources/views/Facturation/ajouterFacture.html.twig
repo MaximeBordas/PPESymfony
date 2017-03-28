@@ -60,6 +60,11 @@
             {{ form_errors(form.commentaire) }}
         </div>
         <div class="form-group">
+            {{ form_label(form.montantRemise)}}
+            {{ form_widget(form.montantRemise)}}
+            {{ form_errors(form.montantRemise)}}
+        </div>
+        <div class="form-group">
             {{ form_label(form.txRemise,"Taux de remise pour la facture") }}
             {{ form_widget(form.txRemise) }}
             {{ form_errors(form.txRemise) }}
