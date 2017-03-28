@@ -38,7 +38,11 @@
             <div class="col-lg-2">
                 <address>
                     <strong>Mode de Payement:</strong><br>
-                    {{ laFacture.modeReglement.libModReglement }}
+                    {% if laFacture.factureRegler == 1 %}
+                        {{ laFacture.modeReglement.libModReglement }}
+                    {% else %}
+                    {% endif %}
+
                 </address>
             </div>
             <div class="col-lg-2">
