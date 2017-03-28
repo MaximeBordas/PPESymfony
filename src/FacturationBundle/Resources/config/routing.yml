@@ -22,6 +22,12 @@ facturation_facture_gestion_reglement:
     path: /facture/reglement
     defaults: { _controller: FacturationBundle:Facturation:gestionReglement }
 
+facturation_facture_gestion_d_un_reglement:
+    path: /facture/reglement/gestion/{id}
+    defaults: { _controller: FacturationBundle:Facturation:gestionDUnReglement, id: 1 }
+    requirements:
+            id: \d+
+
 facturation_facture_imprimer:
   path:   /facture/imprimer
   defaults: {_controller: FacturationBundle:Facturation:ImprimerFacture }
@@ -30,5 +36,7 @@ facturation_facture_ajouter:
   path:   /facture/ajouter
   defaults: {_controller: FacturationBundle:Facturation:ajouterFacture}
 
-
+facturation_facture_supprimer:
+  path:   /facture/suppres/{id}
+  defaults: {_controller: FacturationBundle:Facturation:supprimerFacture}
 
