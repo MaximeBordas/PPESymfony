@@ -341,4 +341,8 @@ class Client
     {
         return $this->commentaireClient;
     }
+    public function __toString()
+    {
+        return $this->nomClient;
+    }
 }
