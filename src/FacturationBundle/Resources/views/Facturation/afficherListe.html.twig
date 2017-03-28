@@ -62,7 +62,6 @@
             <table style="text-align: center" class="table table-bordered table-hover" >
                 <thead class="thead">
                 <tr>
-                    <th>ID</th>
                     <th>Libelle de la facture</th>
                     <th>Date de la facture</th>
                     <th>Taux TVA</th>
@@ -81,8 +80,7 @@
                     <tbody>
                     {% for facture in lalisteFacture %}
                     <tr class="corps">
-                        <td>{{ facture.id }}</td>
-                        <td>{{ facture.libFacture }}</td>
+                        <td><a href="{{ path('facturation_afficher_facture', {'id': facture.id}) }}">{{ facture.libFacture }}</a></td>
                         <td>{{ facture.DateFacture|date('d-m-Y') }}</td>
                         <td>{{ facture.numTauxTVA }}</td>
                         <td>{{ facture.montantHT }}</td>
