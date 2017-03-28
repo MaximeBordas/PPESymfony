@@ -68,7 +68,7 @@
             {% for facture in lesFactures %}
                 <tbody>
                 <tr>
-                    <td>{{ facture.libFacture }}</td>
+                    <td><a href="{{ path('facturation_afficher_facture', {'id': facture.id}) }}">{{ facture.libFacture }}</a></td>
                     <td>{{ facture.montantTTC }}</td>
                     <td>{{ facture.dateFacture|date('d-m-Y') }}</td>
                     <td>{{ facture.txRemise }}</td>

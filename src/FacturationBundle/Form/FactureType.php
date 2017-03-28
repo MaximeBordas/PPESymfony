@@ -29,12 +29,12 @@ class FactureType extends AbstractType
             ->add('commentaire')
             ->add('montantRemise')
             ->add('txRemise')
-            ->add('dateDevis')
-            ->add('banque')
-            ->add('modeReglement')
-            ->add('Tva')
-            ->add('facturePrestation')
-            ->add('client');
+            ->add('dateDevis');
+//            ->add('banque')
+//            ->add('modeReglement')
+//            ->add('Tva')
+//            ->add('facturePrestation')
+//            ->add('client');
     }
     
     /**
