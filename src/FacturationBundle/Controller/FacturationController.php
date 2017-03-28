@@ -27,6 +27,8 @@ class FacturationController extends Controller
     {
         return $this->render('FacturationBundle:Facturation:index.html.twig');
     }
+
+    // FONCTION POUR AFFICHER UNE FACTURE ACTION
     public function afficherFactureAction($id)
     {
 
@@ -38,6 +40,9 @@ class FacturationController extends Controller
         // on demande à la vue d'afficher la pharm
         return $this->render('FacturationBundle:Facturation:afficherFacture.html.twig', array('laFacture'=>$uneFacture));
     }
+
+    // FONCTION AFFICHER LA LISTE DE FACTURE ACTION
+
     public function afficherListeAction()
     {
 
