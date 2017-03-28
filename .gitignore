@@ -7,15 +7,12 @@
 nbproject/*
 Resources/public/vendor/*
 Resources/docs/apidoc
-<<<<<<< HEAD
+
 /.idea
-=======
-<<<<<<< HEAD
-/.idea
-=======
+
+
 .idea/*
->>>>>>> master
->>>>>>> master
+
 
 # Email spool folder
 /app/spool/*
