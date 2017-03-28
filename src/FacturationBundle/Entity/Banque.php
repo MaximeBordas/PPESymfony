@@ -63,4 +63,8 @@ class Banque
     {
         return $this->libBanque;
     }
+    public function __toString()
+    {
+        return $this->libBanque;
+    }
 }

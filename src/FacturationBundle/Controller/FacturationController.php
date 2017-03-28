@@ -32,6 +32,7 @@ class FacturationController extends Controller
         //recupération des caractéristiques d'une facture dont le numéro est contenu dans $id
         $em=$this->getDoctrine()->getManager();
         $factureRepository = $em->getRepository('FacturationBundle:Facture');
+        $uneFacture = $factureRepository->find($id);
 
         // on demande à la vue d'afficher la pharm
         return $this->render('FacturationBundle:Facturation:afficherFacture.html.twig', array('laFacture'=>$uneFacture));
