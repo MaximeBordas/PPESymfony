@@ -2,102 +2,86 @@
 {% block page_title %}<h1>Gestion des Reglements</h1>{% endblock %}
 {% block page_subtitle %}<small></small>{% endblock %}
 {% block page_content %}
-    <!--<form method="post">
-        <div class="col-lg-8">
-            <div class="form-group">
-                <label class="control-label col-sm-2" for ="clientFac">Client:</label>
-                <div class="col-sm-10">
-                    {#<input type="text" class="form-control" id="numFacture" name="numFacture" placeholder="Nom de la pharmacie">#}
-                    <select class="form-control" id="clientFac">
-                        <option></option>
-                        <option>Seb</option>
-                        <option>Thomas</option>
-                        <option>Farcy</option>
-                    </select>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for ="banqueFac">Banque :</label>
-                <div class="col-sm-10">
-                    {#<input type="text" class="form-control" id="numFacture" name="numFacture" placeholder="Nom de la pharmacie">#}
-                    <select class="form-control" id="banqueFac">
-                        <option></option>
-                        <option>BNP</option>
-                        <option>Banque Postale</option>
-                        <option>LCL</option>
-                    </select>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for ="dateFac">Date Facture:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="dateFac" name="dateFac" value="" >
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for ="typeFac">Type de Facture :</label>
-                <div class="col-sm-10">
-                    {#<input type="text" class="form-control" id="numFacture" name="numFacture" placeholder="Nom de la pharmacie">#}
-                    <select class="form-control" id="typeFac">
-                        <option></option>
-                        <option>Btp </option>
-                        <option>Aeronautique</option>
-                    </select>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for ="montantTTCFac">Montant TTC:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="montantTTCFac" name="montantTTCFac" value="" >
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for ="txRemiseFac">taux de remise :</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="txRemiseFac" name="txRemiseFac" value="" >
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for ="commentaireFac">Commentaire:</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="commentaireFac" name="commentaireFac" value="" >
-                </div>
-            </div>
-            <br>
-            <br>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox" name="client">
-                        <label><input type="checkbox" name="client">Client</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
-                    <button type="submit" class="btn btn-success">Valider</button>
-                </div>
-            </div>
-
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.dateFacture,"Date de la Facture") }}
+            {{ form_widget(form.dateFacture)}}
+            {{ form_errors(form.dateFacture) }}
         </div>
-
-    </form>-->
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Ajouter !</button>
-    {{ form_end(form) }}
+        <div class="form-group">
+            {{ form_label(form.numTauxTva,"Taux de TVA") }}
+            {{ form_widget(form.numTauxTva)  }}
+            {{ form_errors(form.numTauxTva) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.montantHT,"Montant Hors Taxe") }}
+            {{ form_widget(form.montantHT) }}
+            {{ form_errors(form.montantHT) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.montantTTC,"Montant Toute Taxe Comprise") }}
+            {{ form_widget(form.montantTTC) }}
+            {{ form_errors(form.montantTTC) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.montantAccompteTTC, "Montant accoompte Toute Taxe Comprise" ) }}
+            {{ form_widget(form.montantAccompteTTC) }}
+            {{ form_errors(form.montantAccompteTTC) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.numCheque, "Numéro du cheque") }}
+            {{ form_widget(form.numCheque) }}
+            {{ form_errors(form.numCheque) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.dateReglement, "Date du reglement") }}
+            {{ form_widget(form.dateReglement) }}
+            {{ form_errors(form.dateReglement) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.typeFacture,"Type de la Facture") }}
+            {{ form_widget(form.typeFacture) }}
+            {{ form_errors(form.typeFacture) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.montantRegle,"Montant déjà regler") }}
+            {{ form_widget(form.montantRegle) }}
+            {{ form_errors(form.montantRegle) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.libFacture,"Libelle de la facture") }}
+            {{ form_widget(form.libFacture) }}
+            {{ form_errors(form.libFacture) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.commentaire,"Commentaire par rapport a la facture") }}
+            {{ form_widget(form.commentaire) }}
+            {{ form_errors(form.commentaire) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.txRemise,"Taux de remise pour la facture") }}
+            {{ form_widget(form.txRemise) }}
+            {{ form_errors(form.txRemise) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.dateDevis,"Date du Devis") }}
+            {{ form_widget(form.dateDevis) }}
+            {{ form_errors(form.dateDevis) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.banque,"Banque associé") }}
+            {{ form_widget(form.banque) }}
+            {{ form_errors(form.banque) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.modeReglement,"Mode de réglement choisi") }}
+            {{ form_widget(form.modeReglement) }}
+            {{ form_errors(form.modeReglement) }}
+        </div>
+        <button type="submit">Ajouter !</button>
+        {{ form_end(form) }}
+    </div>
 
 
 {% endblock %}
