@@ -84,6 +84,21 @@
             {{ form_widget(form.modeReglement) }}
             {{ form_errors(form.modeReglement) }}
         </div>
+        <div class="form-group">
+            {{ form_label(form.Tva,"Tva") }}
+            {{ form_widget(form.Tva) }}
+            {{ form_errors(form.Tva) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.facturePrestation,"Prestation") }}
+            {{ form_widget(form.facturePrestation) }}
+            {{ form_errors(form.facturePrestation) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.client,"Client") }}
+            {{ form_widget(form.client) }}
+            {{ form_errors(form.client) }}
+        </div>
         <button type="submit">Ajouter !</button>
         {{ form_end(form) }}
     </div>
