@@ -62,4 +62,5 @@ class TVA
     {
         return $this->tauxTva;
     }
+
 }
