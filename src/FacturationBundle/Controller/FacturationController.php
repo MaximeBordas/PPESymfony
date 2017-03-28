@@ -32,16 +32,24 @@ class FacturationController extends Controller
         //recupération des caractéristiques d'une facture dont le numéro est contenu dans $id
         $em=$this->getDoctrine()->getManager();
         $factureRepository = $em->getRepository('FacturationBundle:Facture');
-        $uneFacture = $factureRepository->find($id);
 
         // on demande à la vue d'afficher la pharm
         return $this->render('FacturationBundle:Facturation:afficherFacture.html.twig', array('laFacture'=>$uneFacture));
     }
     public function afficherListeAction()
     {
-        $listeFacture = $this->listeFactures();
-        return $this->render('FacturationBundle:Facturation:afficherListe.html.twig',array('lalisteFacture' =>$listeFacture));
+
+        $em = $this->getDoctrine()->getManager();
+        $FactureRepository = $em->getRepository('FacturationBundle:Facture');
+        $listeFacture = $FactureRepository->findAll();
+
+        return $this->render('FacturationBundle:Facturation:afficherListe.html.twig',array('lalisteFacture'=>$listeFacture));
+
     }
+
+
+
+    // FONCTION GESTION DE REGLEMENT ACTION
     public function gestionReglementAction()
     {
         // récupération de la liste des pharmacies
@@ -52,6 +60,10 @@ class FacturationController extends Controller
 
         return $this->render('FacturationBundle:Facturation:gestionReglement.html.twig', array('lesFactures'=>$listFactures));
     }
+
+
+
+    // FONCTION IMPRIMER UNE FACTURE ACTION
     public function imprimerFactureAction()
     {
         $lesFactures = $this->getDoctrine()->getManager()->getRepository('FacturationBundle:Facture')->findAll();
@@ -90,16 +102,8 @@ class FacturationController extends Controller
         //on rend la vue
         return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig',array('form'=>$formView));
     }
-    public function listeFactures()
-    {
-        $lalisteFacture = array(
-            array('id'=>1, 'nom_F'=>'Agena3000','client'=>'Nodevo', 'Date'=>'01/03/2017', 'annee Facture'=> 2017, 'montantHT'=>330.52, 'montantTVA'=>66.10, 'montantTTC'=>396.64,'txremise'=>5,'montantTotal'=>376.80 ,'reglement'=>'checbox','Date reglement'=>'20/03/2017','commentaire'=> 'aucun commentaire'),
 
-            array('id'=>2, 'nom_F'=>'Services informatique','client'=>'Mme. KINTZLER', 'Date'=>'02/06/2016', 'annee Facture'=> 2016, 'montantHT'=>150, 'montantTVA'=>30, 'montantTTC'=>180,'txremise'=>0,'montantTotal'=>180 ,'reglement'=>'checbox','Date reglement'=>'03/06/2016','commentaire'=> 'aucun commentaire'),
 
-            array('id'=>3, 'nom de la facture'=>'matériels informatique','client'=>'Etablissment St vincent', 'Date'=>'20/03/2017', 'annee Facture'=> 2017, 'montantHT'=>580.52, 'montantTVA'=>116.10, 'montantTTC'=>696.62,'txremise'=>0,'montantTotal'=>696.62 ,'reglement'=>'checbox','Date reglement'=>'','commentaire'=> 'paiement en attente'),
-        );
-        return $lalisteFacture;
-    }
+
 
 }
