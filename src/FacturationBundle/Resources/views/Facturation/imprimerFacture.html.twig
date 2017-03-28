@@ -21,7 +21,7 @@
                     <td>{{ facture.montantTTC }}</td>
                     <td>{{ facture.dateFacture|date('d-m-Y') }}</td>
                     <td>{{ facture.txRemise }}</td>
-                    <td> <a class="btn btn-success" href="{{ path('facturation_afficher_facture', {'id': facture.id}) }}"> Voir la facture </a>  </td>
+                    <td> <a class="btn btn-success" href="{{ path('facturation_afficher_facture_PDF', {'id': facture.id}) }}"> Voir la facture </a>  </td>
                 </tr>
                 </tbody>
             {% else %}
