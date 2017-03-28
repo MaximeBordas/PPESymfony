@@ -1,230 +1,64 @@
 {% extends "::base.html.twig" %}
-{% block page_title %}<h1>Consultation d'une facture</h1>{% endblock %}
+{% block page_title %}<u> <h1><center>Consultation d'une facture</center></h1></u>{% endblock %}
 {% block page_subtitle %}<small></small>{% endblock %}
 {% block page_content %}
 
-
-
-    {#<table class="table-condensed table-bordered table-striped">#}
-        {#<thead>#}
-        {#<tr>#}
-            {#<th colspan="7" class="center">#}
-                {#{% set time = laFacture.datefacture|date("m/d/Y") %}#}
-                {#{{ time|date('F') }}#}
-            {#</th>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th width="15%">Lundi</th>#}
-            {#<th width="15%">Mardi</th>#}
-            {#<th width="16%">Mercredi</th>#}
-            {#<th width="15%">Jeudi</th>#}
-            {#<th width="15%">Vendredi</th>#}
-            {#<th width="12%">Samedi</th>#}
-            {#<th width="12%">Dimanche</th>#}
-        {#</tr>#}
-        {#</thead>#}
-        {#<tbody>#}
-        {#<tr>#}
-            {#{% set daysInMonth = time|date('t') %}#}
-            {#{% set startDow = time|date('F 1\\s\\t Y')|date('N') - 1 %}#}
-            {#{% set dow = startDow %}#}
-            {#{% for day in range(1,daysInMonth) %}#}
-                {#{% if loop.first and startDow != 0 %}#}
-                    {#<td colspan="{{ startDow }}"></td>#}
-                {#{% endif %}#}
-                {#{% if day == time|date('d')%}#}
-                {#<td class="btn-primary">#}
-                    {#<div>#}
-                        {#<div>{{ day }}</div>#}
-                        {#<div>#}
-                            {# day content here #}
-                        {#</div>#}
-                    {#</div>#}
-                {#</td>#}
-                {#{% else %}#}
-                {#<td>#}
-                    {#<div>#}
-                        {#<div>{{ day }}</div>#}
-                        {#<div>#}
-                            {# day content here #}
-                        {#</div>#}
-                    {#</div>#}
-                {#</td>#}
-                {#{% endif %}#}
-                {#{% if loop.last and dow != 6 %}#}
-                    {#<td  colspan="{{ 6 - dow }}">&nbsp;</td>#}
-                {#{% endif %}#}
-                {#{% if dow == 6 %}#}
-                {#{% set dow = 0 %}#}
-            {#</tr>#}
-            {#<tr>#}
-                {#{% else %}#}
-                    {#{% set dow = dow + 1 %}#}
-                {#{% endif %}#}
-            {#{% endfor %}#}
-        {#</tr>#}
-        {#</tbody>#}
-    {#</table>#}
-
-    {#<div class="container">#}
-        {#<div class="row">#}
-            {#<div class="span12">#}
-                {#<table class="table-condensed table-bordered table-striped">#}
-                    {#<thead>#}
-                    {#<tr>#}
-                        {#<th colspan="7">#}
-                        {#<span class="btn-group">#}
-                            {#<a class="btn"><i class="icon-chevron-left"></i></a>#}
-                        	{#<a class="btn active">February 2012</a>#}
-                        	{#<a class="btn"><i class="icon-chevron-right"></i></a>#}
-                        {#</span>#}
-                        {#</th>#}
-                    {#</tr>#}
-                    {#<tr>#}
-                        {#<th>Su</th>#}
-                        {#<th>Mo</th>#}
-                        {#<th>Tu</th>#}
-                        {#<th>We</th>#}
-                        {#<th>Th</th>#}
-                        {#<th>Fr</th>#}
-                        {#<th>Sa</th>#}
-                    {#</tr>#}
-                    {#</thead>#}
-                    {#<tbody>#}
-                    {#<tr>#}
-                        {#<td class="muted">29</td>#}
-                        {#<td class="muted">30</td>#}
-                        {#<td class="muted">31</td>#}
-                        {#<td>1</td>#}
-                        {#<td>2</td>#}
-                        {#<td>3</td>#}
-                        {#<td>4</td>#}
-                    {#</tr>#}
-                    {#<tr>#}
-                        {#<td>5</td>#}
-                        {#<td>6</td>#}
-                        {#<td>7</td>#}
-                        {#<td>8</td>#}
-                        {#<td>9</td>#}
-                        {#<td>10</td>#}
-                        {#<td>11</td>#}
-                    {#</tr>#}
-                    {#<tr>#}
-                        {#<td>12</td>#}
-                        {#<td>13</td>#}
-                        {#<td>14</td>#}
-                        {#<td>15</td>#}
-                        {#<td>16</td>#}
-                        {#<td>17</td>#}
-                        {#<td>18</td>#}
-                    {#</tr>#}
-                    {#<tr>#}
-                        {#<td>19</td>#}
-                        {#<td class="btn-primary"><strong>20</strong></td>#}
-                        {#<td>21</td>#}
-                        {#<td>22</td>#}
-                        {#<td>23</td>#}
-                        {#<td>24</td>#}
-                        {#<td>25</td>#}
-                    {#</tr>#}
-                    {#<tr>#}
-                        {#<td>26</td>#}
-                        {#<td>27</td>#}
-                        {#<td>28</td>#}
-                        {#<td>29</td>#}
-                        {#<td class="muted">1</td>#}
-                        {#<td class="muted">2</td>#}
-                        {#<td class="muted">3</td>#}
-                    {#</tr>#}
-                    {#</tbody>#}
-                {#</table>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-
-
-
-{#<div class="col-lg-12">#}
-    {#<div class="panel panel-default">#}
-        {#<div class="panel-heading">#}
-            {#<i class="fa fa-bell fa-fw"></i> Caractéristiques de la facture numéro {{ laFacture.id }}#}
-        {#</div>#}
-        {#<!-- /.panel-heading -->#}
-        {#<div class="panel-body">#}
-            {#<div class="list-group">#}
-                {#<a href="#" class="list-group-item">#}
-                    {#<i class="fa fa-comment fa-fw"></i> Date de la facture : {{ laFacture.datefacture|date("m/d/Y") }}#}
-                {#</a>#}
-                {#<a href="#" class="list-group-item">#}
-                    {#<i class="fa fa-comment fa-fw"></i> Taux TVA: {{ laFacture.numTauxTva }}#}
-                {#</a>#}
-                {#<a href="#" class="list-group-item">#}
-                    {#<i class="fa fa-comment fa-fw"></i> Montant Hors Taxe: {{ laFacture.montantTTC }}#}
-                {#</a>#}
-                {#<a href="#" class="list-group-item">#}
-                    {#<i class="fa fa-comment fa-fw"></i> New Comment#}
-                {#</a>#}
-                {#<a href="#" class="list-group-item">#}
-                    {#<i class="fa fa-comment fa-fw"></i> New Comment#}
-                {#</a>#}
-                {#<a href="#" class="list-group-item">#}
-                    {#<i class="fa fa-comment fa-fw"></i> New Comment#}
-                {#</a>#}
-
-            {#</div>#}
-            {#<!-- /.list-group -->#}
-            {#<a href="#" class="btn btn-default btn-block">View All Alerts</a>#}
-        {#</div>#}
-        {#<!-- /.panel-body -->#}
-    {#</div>#}
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="invoice-title">
-                    <h2>{{ laFacture.libFacture }}</h2><h3 class="pull-right">Order # {{ laFacture.id }}</h3>
+                <div class="col-lg-6">
+                    <h4>{{ laFacture.libFacture }}</h4>
+                    <small class="pull">Order # {{ laFacture.id }}</small>
                 </div>
-                <hr>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <address>
-                            <strong>Billed To:</strong><br>
-                            John Smith<br>
-                            1234 Main<br>
-                            Apt. 4B<br>
-                            Springfield, ST 54321
-                        </address>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <address>
-                            <strong>Shipped To:</strong><br>
-                            Jane Smith<br>
-                            1234 Main<br>
-                            Apt. 4B<br>
-                            Springfield, ST 54321
-                        </address>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <address>
-                            <strong>Mode de Payement:</strong><br>
-                            {{ laFacture.modeReglement.libModReglement }}
-                        </address>
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <address>
-                            <strong>Date de la facture:</strong><br>
-                            {{ laFacture.datefacture|date("m/d/Y") }}<br><br>
-                            <strong>Date du devis:</strong><br>
-                            {{ laFacture.unDevis.dateDevis|date("m/d/Y") }}<br><br>
-                        </address>
-
-                    </div>
-                </div>
+                <hr> <br> <br>
+            <div class="col-lg-6">
             </div>
         </div>
-
         <div class="row">
+            <div class="col-lg-1">
+            </div>
+                <div class="col-lg-2">
+                    <address>
+                        <strong>Billed To:</strong><br>
+                        John Smith<br>
+                        1234 Main<br>
+                        Apt. 4B<br>
+                        Springfield, ST 54321
+                    </address>
+                </div>
+                <div class="col-lg-2">
+                    <address>
+                        <strong>Shipped To:</strong><br>
+                        Jane Smith<br>
+                        1234 Main<br>
+                        Apt. 4B<br>
+                        Springfield, ST 54321 <br> <br>
+                    </address>
+                </div>
+
+            <div class="col-lg-2">
+                <address>
+                    <strong>Mode de Payement:</strong><br>
+                    {{ laFacture.modeReglement.libModReglement }}
+                </address>
+            </div>
+            <div class="col-lg-2">
+                <address>
+                    <strong>Date de la facture:</strong><br>
+                    {{ laFacture.datefacture|date("m/d/Y") }}<br><br>
+                </address>
+            </div>
+            <div class="col-lg-2">
+                <address>
+                    <strong>Date du devis:</strong><br>
+                    {{ laFacture.unDevis.dateDevis|date("m/d/Y") }}<br><br>
+                </address>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -268,10 +102,18 @@
                 </div>
             </div>
         </div>
+    <div class="row">
+    <div class="col-lg-3">
+    </div>
+        <div class="col-lg-6">
+            <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
+            <a href="#" class="btn btn-info"><i class="glyphicon glyphicon-edit"></i>Modifier la pharmacie.</a>
+            <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>Supprimer la pharmacie.</a>
+        </div>
+        <div class="col-lg-3">
+        </div>
     </div>
 
-    <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
-    <a href="#" class="btn btn-info"><i class="glyphicon glyphicon-edit"></i>Modifier la pharmacie.</a>
-    <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>Supprimer la pharmacie.</a>
+
 
 {% endblock %}
