@@ -10,6 +10,7 @@ namespace FacturationBundle\Controller;
 
 
 use FacturationBundle\Entity\Facture;
+use FacturationBundle\Entity\ModeReglement;
 use FacturationBundle\Form\FactureType;
 use FacturationBundle\FacturationBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,16 +27,22 @@ class FacturationController extends Controller
     {
         return $this->render('FacturationBundle:Facturation:index.html.twig');
     }
+
+    // FONCTION POUR AFFICHER UNE FACTURE ACTION
     public function afficherFactureAction($id)
     {
 
         //recupération des caractéristiques d'une facture dont le numéro est contenu dans $id
         $em=$this->getDoctrine()->getManager();
         $factureRepository = $em->getRepository('FacturationBundle:Facture');
+        $uneFacture = $factureRepository->find($id);
 
         // on demande à la vue d'afficher la pharm
         return $this->render('FacturationBundle:Facturation:afficherFacture.html.twig', array('laFacture'=>$uneFacture));
     }
+
+    // FONCTION AFFICHER LA LISTE DE FACTURE ACTION
+
     public function afficherListeAction()
     {
 
@@ -59,6 +66,62 @@ class FacturationController extends Controller
 
 
         return $this->render('FacturationBundle:Facturation:gestionReglement.html.twig', array('lesFactures'=>$listFactures));
+    }
+    public function gestionDUnReglementAction($id, Request $request)
+    {
+
+        if ($request->isMethod('POST'))
+        {
+
+            $leModeReglement = $request->get('methode');
+            $em=$this->getDoctrine()->getManager();
+            $factureRepository = $em->getRepository('FacturationBundle:Facture');
+            $modeReglement = $em->getRepository('FacturationBundle:ModeReglement');
+            $uneFacture = $factureRepository->find($id);
+            $dateReglement = new \DateTime();
+            $uneFacture->setDateReglement($dateReglement);
+            $unMode = $modeReglement->find($leModeReglement);
+            $unMode = $modeReglement->findOneBy(array('libModReglement'=>$leModeReglement));
+            $uneFacture->setModeReglement($unMode);
+
+            if (isset($_POST['regler']))
+            {
+                $uneFacture->setFactureRegler(1);
+            }
+            else
+            {
+                $uneFacture->setFactureRegler(0);
+            }
+
+            // On pérsiste l'entité
+            $em->persist($uneFacture);
+
+            // On flush tout ce qui a été persisté avant
+            $em->flush();
+            // affichage d'une message flash pour indiquer que la pharmacie à bien était ajoutée
+            $this->addFlash('success','l\'article a bien été modifié');
+
+            //Renvois vers la liste des factures
+            // récupération de la liste des pharmacies
+            // --------------
+            $repository = $this->getDoctrine()->getManager()->getRepository('FacturationBundle:Facture');
+            $listFactures=$repository->findAll();
+
+
+            return $this->render('FacturationBundle:Facturation:gestionReglement.html.twig', array('lesFactures'=>$listFactures));
+
+
+        }
+        else
+        {
+            // récupération de la liste des pharmacies
+            // --------------
+            $factureRepository = $this->getDoctrine()->getManager()->getRepository('FacturationBundle:Facture');
+            $laFacture=$factureRepository->find($id);
+            return $this->render('FacturationBundle:Facturation:gestionDUnReglement.html.twig', array('laFacture'=>$laFacture));
+
+        }
+
     }
 
 
