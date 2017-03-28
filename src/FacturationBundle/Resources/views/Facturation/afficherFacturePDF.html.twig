@@ -1,0 +1,89 @@
+<page backtop="7%" backbottom="7mm" backleft="10mm" backright="10mm">
+    <page_header backtop="7%" backbottom="7%" backright="-100px"  >
+        <h4> <strong> <u>  {{ laFacture.libFacture }} ( Order #  {{ laFacture.id }} ) </u></strong></h4>
+    </page_header>
+    <hr>
+    <page_footer>
+        Page Footer
+    </page_footer>
+
+    <div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-2">
+            <address>
+                <strong>Billed To:</strong><br>
+                John Smith<br>
+                1234 Main<br>
+                Apt. 4B<br>
+                Springfield, ST 54321 <br> <br>
+            </address>
+        </div>
+        <div class="col-lg-2">
+            <address>
+                <strong>Shipped To:</strong><br>
+                Jane Smith<br>
+                1234 Main<br>
+                Apt. 4B<br>
+                Springfield, ST 54321 <br> <br>
+            </address>
+        </div>
+        <div class="col-lg-2">
+            <address>
+                <strong>Mode de Payement:</strong><br>
+                {{ laFacture.modeReglement.libModReglement }} <br> <br>
+            </address>
+        </div>
+        <div class="col-lg-2">
+            <address>
+                <strong>Date de la facture:</strong><br>
+                {{ laFacture.datefacture|date("m/d/Y") }}<br><br>
+            </address>
+        </div>
+        <div class="col-lg-2">
+            <address>
+                <strong>Date du devis:</strong><br>
+                {{ laFacture.unDevis.dateDevis|date("m/d/Y") }}<br><br>
+            </address>
+        </div>
+        <div class="col-lg-1">
+        </div>
+    </div>
+    <br> <br>
+    <hr>
+    <br> <br>
+    <h3 class="panel-title"><strong>Order summary</strong></h3>
+                        <table class="table-bordered">
+                            <thead>
+                            <tr>
+                                <td><strong>Libelle</strong></td>
+                                <td><strong>Taux TVA</strong></td>
+                                <td><strong>Montant HT</strong></td>
+                                <td><strong>Montant TTC</strong></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                            <tr>
+                                <td>{{ laFacture.libFacture }}</td>
+                                <td class="text-center">{{ laFacture.Tva.tauxTva }}</td>
+                                <td class="text-center">{{ laFacture.montantHT }}</td>
+                                <td class="text-right">{{ laFacture.montantTTC }}</td>
+                            </tr>
+                            <tr>
+                                <td class="thick-line"></td>
+                                <td class="thick-line"></td>
+                                <td class="thick-line text-center"><strong>Remise</strong></td>
+                                <td class="thick-line text-right">{{ laFacture.montantRemise }}</td>
+                            </tr>
+                            <tr>
+                                <td class="no-line"></td>
+                                <td class="no-line"></td>
+                                <td class="no-line text-center"><strong>Total</strong></td>
+                                <td class="no-line text-right">{{ laFacture.montantTTC - laFacture.montantRemise }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+</page>
+
+

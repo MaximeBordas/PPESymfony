@@ -100,13 +100,45 @@ class FacturationController extends Controller
 
         }
 
-
-
         //on Crée le html de la vue
         $formView  = $form->createView();
 
         //on rend la vue
         return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig',array('form'=>$formView));
+    }
+
+    public function afficherFacturePDFAction($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $factureRepository = $em->getRepository('FacturationBundle:Facture');
+        $uneFacture = $factureRepository->find($id);
+        //on stocke la vue à convertir en PDF, en n'oubliant pas les paramètres twig si la vue comporte des données dynamiques
+        $html = $this->renderView('FacturationBundle:Facturation:afficherFacturePDF.html.twig', array('laFacture' => $uneFacture));
+
+        //on instancie la classe Html2Pdf_Html2Pdf en lui passant en paramètre
+        //le sens de la page "portrait" => p ou "paysage" => l
+        //le format A4,A5...
+        //la langue du document fr,en,it...
+        $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+
+        //SetDisplayMode définit la manière dont le document PDF va être affiché par l’utilisateur
+        //fullpage : affiche la page entière sur l'écran
+        //fullwidth : utilise la largeur maximum de la fenêtre
+        //real : utilise la taille réelle
+        $html2pdf->pdf->SetDisplayMode('real');
+
+        //writeHTML va tout simplement prendre la vue stocker dans la variable $html pour la convertir en format PDF
+        $html2pdf->writeHTML($html);
+
+        //Output envoit le document PDF au navigateur internet avec un nom spécifique qui aura un rapport avec le contenu à convertir (exemple : Facture, Règlement…)
+        $html2pdf->Output('Facture.pdf');
+
+        var_dump($html);
+        die();
+
+
+//        return new Response();
+        return $this->render('FacturationBundle:Facturation:afficherFacture.html.twig', array('laFacture'=>$uneFacture));
     }
 
 
