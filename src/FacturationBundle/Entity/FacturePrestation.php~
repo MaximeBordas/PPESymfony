@@ -104,29 +104,7 @@ class FacturePrestation
         return $this->id;
     }
 
-    /**
-     * Set numFacture
-     *
-     * @param integer $numFacture
-     *
-     * @return FacturePrestation
-     */
-    public function setNumFacture($numFacture)
-    {
-        $this->numFacture = $numFacture;
 
-        return $this;
-    }
-
-    /**
-     * Get numFacture
-     *
-     * @return int
-     */
-    public function getNumFacture()
-    {
-        return $this->numFacture;
-    }
 
     /**
      * Set numLigne
