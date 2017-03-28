@@ -16,15 +16,16 @@ class FactureType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('dateFacture')
+        $builder
+            ->add('dateFacture')
             ->add('numTauxTva')
             ->add('montantHT')
             ->add('montantTTC')
             ->add('montantAccompteTTC')
             ->add('numCheque')
             ->add('dateReglement')
-            ->add('typeFacture'
-            )->add('montantRegle')
+            ->add('typeFacture')
+            ->add('montantRegle')
             ->add('libFacture')
             ->add('commentaire')
             ->add('montantRemise')
