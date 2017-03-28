@@ -62,4 +62,8 @@ class ModeReglement
     {
         return $this->libModReglement;
     }
+    public function __toString()
+    {
+        return $this->libModReglement;
+    }
 }

@@ -16,6 +16,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 
 class FacturationController extends Controller
@@ -24,8 +26,16 @@ class FacturationController extends Controller
     {
         return $this->render('FacturationBundle:Facturation:index.html.twig');
     }
+    public function afficherFactureAction($id)
+    {
 
-    // FONCTION AFFICHER LA LISTE ACTION
+        //recupération des caractéristiques d'une facture dont le numéro est contenu dans $id
+        $em=$this->getDoctrine()->getManager();
+        $factureRepository = $em->getRepository('FacturationBundle:Facture');
+
+        // on demande à la vue d'afficher la pharm
+        return $this->render('FacturationBundle:Facturation:afficherFacture.html.twig', array('laFacture'=>$uneFacture));
+    }
     public function afficherListeAction()
     {
 
