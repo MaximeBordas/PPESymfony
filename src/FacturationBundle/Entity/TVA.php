@@ -63,4 +63,9 @@ class TVA
         return $this->tauxTva;
     }
 
+    public function __toString()
+    {
+        return (string)$this->tauxTva;
+    }
+
 }
