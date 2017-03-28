@@ -1,6 +1,19 @@
 {% extends "::base.html.twig" %}
 {% block page_title %}<h1>Gestion des Reglements</h1>{% endblock %}
 {% block page_subtitle %}<small></small>{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+    {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            jQuery(document).ready(function() {
+                $('.js-datepicker').datepicker();
+            });
+        </script>
+    {% endblock %}
 {% block page_content %}
     <div class="container">
         {{ form_start(form) }}
@@ -83,6 +96,21 @@
             {{ form_label(form.modeReglement,"Mode de réglement choisi") }}
             {{ form_widget(form.modeReglement) }}
             {{ form_errors(form.modeReglement) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.Tva,"Tva") }}
+            {{ form_widget(form.Tva) }}
+            {{ form_errors(form.Tva) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.facturePrestation,"Prestation") }}
+            {{ form_widget(form.facturePrestation) }}
+            {{ form_errors(form.facturePrestation) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.client,"Client") }}
+            {{ form_widget(form.client) }}
+            {{ form_errors(form.client) }}
         </div>
         <button type="submit">Ajouter !</button>
         {{ form_end(form) }}

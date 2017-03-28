@@ -347,4 +347,8 @@ class FacturePrestation
         return $this->montantTtcPrestation;
     }
 
+    public function __toString()
+    {
+        return $this->lib;
+    }
 }
