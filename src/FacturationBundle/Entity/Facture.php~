@@ -32,12 +32,16 @@ class Facture
     /**
      * @var int
      *
+     * @Verif\Type("integer")
+     *
      * @ORM\Column(name="numTauxTva", type="integer")
      */
     private $numTauxTva;
 
     /**
      * @var float
+     *
+     * @Verif\Type("float")
      *
      * @ORM\Column(name="montantHT", type="float")
      */
@@ -47,12 +51,16 @@ class Facture
     /**
      * @var float
      *
+     * @Verif\Type("float")
+     *
      * @ORM\Column(name="montantTTC", type="float")
      */
     private $montantTTC;
 
     /**
      * @var float
+     *
+     * @Verif\Type("float")
      *
      * @ORM\Column(name="montantAccompteTTC", type="float")
      */
@@ -62,6 +70,8 @@ class Facture
 
     /**
      * @var int
+     *
+     * @Verif\Type("integer")
      *
      * @ORM\Column(name="numCheque", type="integer")
      */
@@ -77,12 +87,16 @@ class Facture
     /**
      * @var string
      *
+     * @Verif\Type("string")
+     *
      * @ORM\Column(name="typeFacture", type="string", length=255)
      */
     private $typeFacture;
 
     /**
      * @var float
+     *
+     * @Verif\Type("float")
      *
      * @ORM\Column(name="montantRegle", type="float")
      */
@@ -91,12 +105,16 @@ class Facture
     /**
      * @var string
      *
+     * @Verif\Type("string")
+     *
      * @ORM\Column(name="libFacture", type="string", length=255)
      */
     private $libFacture;
 
     /**
      * @var string
+     *
+     * @Verif\Type("string")
      *
      * @ORM\Column(name="commentaire", type="string", length=5000)
      */
@@ -105,12 +123,16 @@ class Facture
     /**
      * @var float
      *
+     * @Verif\Type("float")
+     *
      * @ORM\Column(name="montantRemise", type="float")
      */
     private $montantRemise;
 
     /**
      * @var float
+     *
+     * @Verif\Type("float")
      *
      * @ORM\Column(name="txRemise", type="float")
      */
@@ -125,6 +147,8 @@ class Facture
 
     /**
      * @var \boolean
+     *
+     * @Verif\Type("bool")
      *
      * @ORM\Column(name="FactureRegler", type="boolean")
      */
