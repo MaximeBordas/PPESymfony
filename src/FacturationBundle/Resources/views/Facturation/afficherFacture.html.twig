@@ -43,6 +43,16 @@
             </div>
             <div class="col-lg-2">
                 <address>
+                    <strong>Etat du payement:</strong><br>
+                    {% if laFacture.factureRegler == 1 %}
+                        <p style="color: green; text-decoration: underline;">Facture réglé</p>
+                    {% else %}
+                        <p style="text-decoration: underline; color: red;">Facture non reglé</td>
+                    {% endif %}
+                </address>
+            </div>
+            <div class="col-lg-2">
+                <address>
                     <strong>Date de la facture:</strong><br>
                     {{ laFacture.datefacture|date("m/d/Y") }}<br><br>
                 </address>
@@ -106,9 +116,9 @@
     <div class="col-lg-3">
     </div>
         <div class="col-lg-6">
-            <a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
-            <a href="#" class="btn btn-info"><i class="glyphicon glyphicon-edit"></i>Modifier la pharmacie.</a>
-            <a href="#" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>Supprimer la pharmacie.</a>
+            <a href="{{ path('facturation_facture_aff_liste') }}" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
+            <a href="#" class="btn btn-info"><i class="glyphicon glyphicon-edit"></i>Modifier la facture.</a>
+            <a href="{{ path('facturation_facture_supprimer',{'id':laFacture.id}) }}" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>Supprimer la facture.</a>
         </div>
         <div class="col-lg-3">
         </div>

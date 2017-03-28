@@ -166,6 +166,44 @@ class FacturationController extends Controller
         return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig',array('form'=>$formView));
     }
 
+    public function supprimerFactureAction($id, Request $request)
+    {
+
+        //la demande est de type post = (=soumission du formulaire de création d'une pharmacie)?
+        //ou de type get = demande d'affichage du formulaire de création d'une pharmacie)???
+        //-----------------------------------------------
+        if($request->isMethod('POST'))
+        {
+            //la demande est de type POST
+            //Récupération des informations saisies dans le formulaire
+            //Et creation de la pharmacie dans la base de données
+            //!!! code a venir !!!
+            $em = $this->getDoctrine()->getManager();
+            $factureRepo = $em->getRepository('FacturationBundle:Facture')->find($id);
+
+            $em->remove($factureRepo);
+            $em->flush();
+
+            // affichage d'une message flash pour indiquer que la pharmacie à bien était ajoutée
+            $this->addFlash('success','l\'article a bien été supprimé');
+
+            $em = $this->getDoctrine()->getManager();
+            $FactureRepository = $em->getRepository('FacturationBundle:Facture');
+            $listeFacture = $FactureRepository->findAll();
+
+            return $this->render('FacturationBundle:Facturation:afficherListe.html.twig',array('lalisteFacture'=>$listeFacture));
+
+
+        }
+        else
+        {
+
+            $factureRepository = $this->getDoctrine()->getManager()->getRepository('FacturationBundle:Facture');
+            $laFacture=$factureRepository->find($id);
+            return $this->render('FacturationBundle:Facturation:supprimerFacture.html.twig', array('laFacture'=>$laFacture));
+        }
+    }
+
 
 
 
