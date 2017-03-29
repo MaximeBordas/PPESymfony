@@ -2,65 +2,52 @@
 {% block page_title %}<center> <u>  <h1> Gestion du réglement de la facture n°{{ laFacture.id }} </h1> </u> </center> {% endblock %}
 {% block page_subtitle %}{% endblock %}
 {% block page_content %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/toggle.css') }}" />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).on('change', '#IsAssociation', function(){
+            debugger;
+            if($(this).prop('checked')){
+                $('#methode').removeAttr('disabled');
+            } else {
+                $('#methode').attr('disabled', 'disabled');
+            }
+        });
+    </script>
+{% endblock %}
 
     <div class="col-lg-6">
 
         <form class="form-inline" method="post">
             <div class="form-group">
-                <label for="sel1">Méthode de Payement:</label>
-                <select class="form-control" id="methode" name="methode">
-                    <option>Paypal</option>
-                    <option>Chèque</option>
-                    <option>Espèce</option>
-                    <option>Virement Bancaire</option>
-                </select>
+                <label>Réglé (o/n):</label>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="regler" name="regler">  A régler </label>
+                    <label class="switch"><input type="checkbox" id="IsAssociation" value="regler" name="regler" {% if laFacture.factureRegler == 1 %}checked{% endif %}>A réglé.<div class="slider round"></div></label>
                 </div>
+                <br>
+                <br>
+                <label for="sel1">Méthode de Payement:</label>
+                <select class="form-control" id="methode" name="methode" selected="selected"{% if laFacture.factureRegler == 0 %}disabled{% endif %}>
+                    <option {% if laFacture.modeReglement.libModReglement == 'Paypal' %}selected="selected"{% endif %}>Paypal</option>
+                    <option {% if laFacture.modeReglement.libModReglement == 'Cheque' %}selected="selected"{% endif %}>Cheque</option>
+                    <option {% if laFacture.modeReglement.libModReglement == 'Espece' %}selected="selected"{% endif %}>Espece</option>
+                    <option {% if laFacture.modeReglement.libModReglement == 'Virement Bancaire' %}selected="selected"{% endif %}>Virement Bancaire</option>
+                </select>
+                <br>
+
             </div>
-            <button type="submit" class="btn btn-success">Valider le payement</button>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-success">Valider</button>
         </form>
 
 
 
-
-
-
-
-
-
-
-
-
-
-        {#<table class="table table-bordered table-hover">#}
-            {#<thead>#}
-            {#<tr>#}
-                {#<th>Libelle</th>#}
-                {#<th>Montant TTC</th>#}
-                {#<th>Date facture</th>#}
-                {#<th>Taux de remise</th>#}
-                {#<th>Reglé</th>#}
-            {#</tr>#}
-            {#</thead>#}
-            {#{% for facture in lesFactures %}#}
-                {#<tbody>#}
-                {#<tr>#}
-                    {#<td><a href="{{ path('facturation_afficher_facture', {'id': facture.id}) }}">{{ facture.libFacture }}</a></td>#}
-                    {#<td>{{ facture.montantTTC }}</td>#}
-                    {#<td>{{ facture.dateFacture|date('d-m-Y') }}</td>#}
-                    {#<td>{{ facture.txRemise }}</td>#}
-                    {#{% if facture.factureRegler == 1 %}#}
-                        {#<td style="color: green; text-decoration: underline;">Facture réglé</td>#}
-                    {#{% else %}#}
-                        {#<td style="text-decoration: underline; color: red;">Facture non reglé</td>#}
-                    {#{% endif %}#}
-                {#</tr>#}
-                {#</tbody>#}
-            {#{% else %}#}
-                {#<td>Pas de projet</td>#}
-            {#{% endfor %}#}
-        {#</table>#}
     </div>
+
 
 {% endblock %}

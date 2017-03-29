@@ -30,8 +30,12 @@
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>New Tasks!</div>
+                            <div class="huge">{{ lalisteDevis|length }}</div>
+                            {% if lalisteDevis|length > 1 %}
+                                <div>Devis</div>
+                            {% else %}
+                                <div>Devis</div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -64,6 +68,7 @@
                     <th>Montant remise</th>
                     <th>taux de remise</th>
                     <th>Date Devis</th>
+                    <th>Reglé</th>
                     <th>Commentaire</th>
                 </tr>
                 </thead>
@@ -82,6 +87,11 @@
                         <td>{{ facture.montantRemise }}</td>
                         <td>{{ facture.txRemise }}</td>
                         <td>{{ facture.DateDevis|date('d-m-Y') }}</td>
+                        {% if facture.factureRegler == 1 %}
+                            <td style="color: green; text-decoration: underline;"><a style="color: green; text-decoration: underline;" href="{{ path('facturation_facture_gestion_d_un_reglement', {'id': facture.id}) }}">Facture réglé</a></td>
+                        {% else %}
+                            <td style="text-decoration: underline; color: red;"><a style="text-decoration: underline; color: red;" href="{{ path('facturation_facture_gestion_d_un_reglement', {'id': facture.id}) }}">Facture non reglé</a></td>
+                        {% endif %}
                         <td>{{ facture.commentaire }}</td>
                     </tr>
                     {% endfor %}

@@ -49,8 +49,10 @@ class FacturationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $FactureRepository = $em->getRepository('FacturationBundle:Facture');
         $listeFacture = $FactureRepository->findAll();
+        $DevisRepository = $em->getRepository('FacturationBundle:Devis');
+        $listeDevis = $DevisRepository->findAll();
 
-        return $this->render('FacturationBundle:Facturation:afficherListe.html.twig',array('lalisteFacture'=>$listeFacture));
+        return $this->render('FacturationBundle:Facturation:afficherListe.html.twig',array('lalisteFacture'=>$listeFacture, 'lalisteDevis'=>$listeDevis));
 
     }
 
@@ -80,9 +82,13 @@ class FacturationController extends Controller
             $uneFacture = $factureRepository->find($id);
             $dateReglement = new \DateTime();
             $uneFacture->setDateReglement($dateReglement);
-            $unMode = $modeReglement->find($leModeReglement);
-            $unMode = $modeReglement->findOneBy(array('libModReglement'=>$leModeReglement));
-            $uneFacture->setModeReglement($unMode);
+
+            if ($leModeReglement != null)
+            {
+                $unMode = $modeReglement->findOneBy(array('libModReglement'=>$leModeReglement));
+                $uneFacture->setModeReglement($unMode);
+            }
+
 
             if (isset($_POST['regler']))
             {
@@ -108,7 +114,13 @@ class FacturationController extends Controller
             $listFactures=$repository->findAll();
 
 
-            return $this->render('FacturationBundle:Facturation:gestionReglement.html.twig', array('lesFactures'=>$listFactures));
+            $em = $this->getDoctrine()->getManager();
+            $FactureRepository = $em->getRepository('FacturationBundle:Facture');
+            $listeFacture = $FactureRepository->findAll();
+            $DevisRepository = $em->getRepository('FacturationBundle:Devis');
+            $listeDevis = $DevisRepository->findAll();
+
+            return $this->render('FacturationBundle:Facturation:afficherListe.html.twig',array('lalisteFacture'=>$listeFacture, 'lalisteDevis'=>$listeDevis));
 
 
         }
