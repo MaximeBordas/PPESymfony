@@ -49,7 +49,8 @@ class FactureType extends AbstractType
             ->add('Tva')
             ->add('facturePrestation')
             ->add('client')
-            ->add('factureRegler');
+            ->add('factureRegler')
+            ->add('unDevis');
     }
     
     /**
