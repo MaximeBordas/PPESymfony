@@ -48,7 +48,8 @@ class FactureType extends AbstractType
             ->add('modeReglement')
             ->add('Tva')
             ->add('facturePrestation')
-            ->add('client');
+            ->add('client')
+            ->add('factureRegler');
     }
     
     /**

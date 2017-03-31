@@ -112,6 +112,11 @@
             {{ form_widget(form.client) }}
             {{ form_errors(form.client) }}
         </div>
+        <div class="form-group">
+            {{ form_label(form.factureRegler,"Facture Reglé") }}
+            {{ form_widget(form.factureRegler) }}
+            {{ form_errors(form.factureRegler) }}
+        </div>
         <button type="submit">Ajouter !</button>
         {{ form_end(form) }}
     </div>
