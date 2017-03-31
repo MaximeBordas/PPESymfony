@@ -165,7 +165,13 @@ class FacturationController extends Controller
             //on envois en bdd
             $em->flush();
 
-            return $this->render("FacturationBundle:Facturation:afficherListe.html.twig");
+            $em = $this->getDoctrine()->getManager();
+            $FactureRepository = $em->getRepository('FacturationBundle:Facture');
+            $listeFacture = $FactureRepository->findAll();
+            $DevisRepository = $em->getRepository('FacturationBundle:Devis');
+            $listeDevis = $DevisRepository->findAll();
+
+            return $this->render('FacturationBundle:Facturation:afficherListe.html.twig',array('lalisteFacture'=>$listeFacture, 'lalisteDevis'=>$listeDevis));
 
         }
 
