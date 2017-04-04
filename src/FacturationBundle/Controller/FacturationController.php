@@ -182,6 +182,39 @@ class FacturationController extends Controller
         return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig',array('form'=>$formView));
     }
 
+    public  function modifierFactureAction(Request $request,Facture $facture)
+    {
+        //On récupére le formulaire
+        $form = $this->createForm(FactureType::class,$facture);
+
+        $form->handleRequest($request);
+
+        //on vérifie si le form est soumis
+        if($form->isSubmitted() && $form->isValid())
+        {
+            //on enregistre la facture en bdd
+            $em = $this->getDoctrine()->getManager();
+
+            //on envois en bdd
+            $em->flush();
+
+            $em = $this->getDoctrine()->getManager();
+            $FactureRepository = $em->getRepository('FacturationBundle:Facture');
+            $listeFacture = $FactureRepository->findAll();
+            $DevisRepository = $em->getRepository('FacturationBundle:Devis');
+            $listeDevis = $DevisRepository->findAll();
+
+            return $this->render('FacturationBundle:Facturation:afficherListe.html.twig',array('lalisteFacture'=>$listeFacture, 'lalisteDevis'=>$listeDevis));
+
+        }
+
+        //on Crée le html de la vue
+        $formView  = $form->createView();
+
+        //on rend la vue
+        return $this->render('FacturationBundle:Facturation:ajouterFacture.html.twig',array('form'=>$formView));
+    }
+
     public function afficherFacturePDFAction($id)
     {
         $em = $this->getDoctrine()->getManager();

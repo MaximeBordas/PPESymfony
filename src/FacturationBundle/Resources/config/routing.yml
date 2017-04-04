@@ -40,3 +40,7 @@ facturation_facture_supprimer:
   path:   /facture/suppres/{id}
   defaults: {_controller: FacturationBundle:Facturation:supprimerFacture}
 
+facturation_facture_modifier:
+  path:   /facture/modif/{id}
+  defaults: {_controller: FacturationBundle:Facturation:modifierFacture}
+
