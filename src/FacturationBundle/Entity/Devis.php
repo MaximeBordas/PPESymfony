@@ -407,4 +407,8 @@ class Devis
     {
         return $this->leClient;
     }
+    public function __toString()
+    {
+        return $this->libDevis;
+    }
 }
